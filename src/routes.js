@@ -32,6 +32,7 @@ routes.get('/appointments', AppointmentController.index);
 routes.get('/schedules', ScheduleController.index);
 
 routes.get('/notifications', NotificationController.index);
+routes.put('/notifications/:id', NotificationController.update);
 
 routes.post('/students', StudentController.store);
 routes.put('/students', StudentController.update);

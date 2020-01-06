@@ -1,7 +1,7 @@
 import User from '../models/User';
 import Notification from '../schemas/Notification';
 
-class AppointmentController {
+class NotificationController {
     async index(req, res) {
         const checkUserProvider = await User.findOne({
             where: { id: req.userId, provider: true },
@@ -21,6 +21,16 @@ class AppointmentController {
 
         return res.json(notifications);
     }
+
+    async update(req, res) {
+        const notification = await Notification.findByIdAndUpdate(
+            req.params.id,
+            { read: true },
+            { new: true }
+        );
+
+        return res.json(notification);
+    }
 }
 
-export default new AppointmentController();
+export default new NotificationController();
